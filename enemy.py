@@ -11,7 +11,7 @@ class Enemy:
         return player.health_lose
 
     def enemy_level(self, player_level):
-        return random.randint(-1, 1)
+        return random.randint(-1,1)
 
     def __str__(self):
         return f'name:{self.name}, health:{self.health}, level:{self.enemy_level()}'

@@ -29,12 +29,14 @@ while enemies:
         stats(player, enemy)
         if e.enemy_level(player.level) <= player.level:
             player.level += 1
+            player.health += 2
             print("You killed the enemy ! \nYou leveled up !!")
             enemy_death(e)
             break
-        elif e.enemy_level > player.level:
+        elif e.enemy_level(player.level) > player.level:
             player.health_lose()
             print("Outch ! You take 1 damage")
+            player.health -= 1
             break
         elif player.health <= 0:
             print("You lose this fight. Don't give up and restart!")
