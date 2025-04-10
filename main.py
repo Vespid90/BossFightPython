@@ -4,12 +4,12 @@ from enemy import Enemy
 player = Player("Hero", 5, 1)
 enemy = Enemy("Monster", 3, None)
 
-def stats(p, en):
+def stats(pl, en):
     print("__________________________")
     print("Your stats \t\tEnemy stats")
     print("__________________________")
-    print(f"Health: {p.health}\t\tHealth: {en.health}")
-    print(f"Level: {p.level}\t\tLevel: {en.enemy_level(p.level)}")
+    print(f"Health: {pl.health}\t\tHealth: {en.health}")
+    print(f"Level: {pl.level}\t\tLevel: {en.enemy_level(pl.level)}")
 
 def start_game():
     print("Welcome to our new RPG, BossFight! Are you ready to embark on an epic adventure?")
