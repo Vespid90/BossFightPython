@@ -2,7 +2,7 @@ from player import Player
 from enemy import Enemy
 
 player = Player("Hero", 5, 1)
-enemy = Enemy("Monster", 5)
+enemy = Enemy("Monster", 3, None)
 
 def stats(p, en):
     print("__________________________")
@@ -11,34 +11,33 @@ def stats(p, en):
     print(f"Health: {p.health}\t\tHealth: {en.health}")
     print(f"Level: {p.level}\t\tLevel: {en.enemy_level(p.level)}")
 
+def start_game():
+    print("Welcome to our new RPG, BossFight! Are you ready to embark on an epic adventure?")
+    while player.level <= 10:
+        start = input("Enter 1 to attack or 2 to leave: ")
+        if start == "1":
+                print("New enemy attacked")
+                while True:
+                    e = enemy
+                    p = player
+                    stats(p, e)
+                    if e.enemy_level(p.level) <= p.level:
+                        p.level_up()
+                        p.health_up()
+                        print("You killed the enemy ! \nYou leveled up !!")
+                        break
+                    elif e.enemy_level(p.level) > p.level:
+                        p.health_lose()
+                        print("Outch ! You take 1 damage")
+                        break
+                    elif p.health <= 0:
+                        print("You lose this fight. Don't give up and restart!")
+                        break
+        elif start == "2":
+            print("Thank you for playing ! See you soon !")
+            quit()
+        else:
+            print("You need to choose between 1 or 2 !")
 
-def enemy_death(en):
-    enemies.remove(en)
+start_game()
 
-enemies= [
-    Enemy("Monster 1", 5),
-    Enemy("Monster 2", 5),
-    Enemy("Monster 3", 5),
-]
-
-while enemies:
-    e = enemies[0]
-    print("New enemy attacked")
-    while True:
-        attack = input("Enter 1 to attack: ")
-        stats(player, enemy)
-        if e.enemy_level(player.level) <= player.level:
-            player.level += 1
-            player.health += 2
-            print("You killed the enemy ! \nYou leveled up !!")
-            enemy_death(e)
-            break
-        elif e.enemy_level(player.level) > player.level:
-            player.health_lose()
-            print("Outch ! You take 1 damage")
-            player.health -= 1
-            break
-        elif player.health <= 0:
-            print("You lose this fight. Don't give up and restart!")
-            print(player.level)
-            break
