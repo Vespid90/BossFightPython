@@ -1,7 +1,5 @@
 import random
 
-
-
 class Enemy:
     def __init__(self, name):
         self.name = name
@@ -10,8 +8,7 @@ class Enemy:
         self.damage = 0
 
     def attack(self):
-        # return player.health_lose()
-        self.damage = random.randint(1, 3)
+        self.damage = random.randint(self.level +0, self.level +2)
         return self.damage
 
     def enemy_level(self, player_level):

@@ -9,7 +9,7 @@ def stats(pl, en):
     print("__________________________")
     print("Your stats \t\tEnemy stats")
     print("__________________________")
-    print(f"Health: {pl.health}\t\tHealth: {en.health}")
+    print(f"Health: {pl.health}\t\tDamage(s): {en.damage}")
     print(f"Level: {pl.level}\t\tLevel: {en.level}")
 
 
@@ -19,28 +19,26 @@ class Game:
 
     def start_game(self):
         print("Welcome to our new RPG, BossFight! Are you ready to embark on an epic adventure?")
-        while player.level <= 100:
-            start = input("Enter 1 to attack or 2 to leave: ")
-            if start == "1":
+        e = enemy
+        p = player
+        while p.level <= 100:
+            start = input("Enter 'a' to attack, 's' to show stats or 'l' to leave: ")
+            if start == "a":
+                stats(p, e)
                 print("New enemy attacked")
-                e = enemy
-                p = player
                 if e.enemy_level(p.level) <= p.level:
-                    stats(player, enemy)
                     p.level_up()
                     p.health_up()
                     print("You killed the enemy ! \nYou leveled up !!")
-                    continue
                 elif e.enemy_level(p.level) > p.level:
-                    stats(player, enemy)
-                    p.health_lose()
+                    p.health_lose(e.attack())
                     print(f"Outch ! You take {e.attack()} damage(s)")
-                    continue
                 elif p.health <= 0:
                     print("You lose this fight. Don't give up and restart!")
-                    continue
-            elif start == "2":
+            elif start == "s":
+                stats(p,e)
+            elif start == "l":
                 print("Thank you for playing ! See you soon !")
                 quit()
             else:
-                print("You need to choose between 1 or 2 !")
+                print("You need to choose between 'a', 's' or 'l' !")
