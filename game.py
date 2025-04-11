@@ -55,6 +55,8 @@ class Game:
                 elif p.health <= 0:
                     stats_player(p)
                     print("You lose this fight. Don't give up and restart!")
+                else:
+                    print("error")
             elif start == "s":
                 stats_player(p)
             elif start == "q":
