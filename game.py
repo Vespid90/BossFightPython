@@ -7,18 +7,26 @@ boss = Enemy("Boss")
 
 def stats(pl, en):
     print("__________________________")
-    print("Your stats \t\tEnemy stats")
+    print("Your stats\t\tEnemy stats")
     print("__________________________")
-    print(f"Health: {pl.health}\t\tDamage(s): {en.attack()}")
+    print(f"Health: {pl.health}\t\t Damage(s): {en.attack()}")
     print(f"Level: {pl.level}\t\tLevel: {en.level}")
     print("__________________________")
 
-def stats_now(pl, en):
+def stats_player(pl):
     print("__________________________")
-    print("Your stats \t\tEnemy stats")
+    print("Your stats")
     print("__________________________")
-    print(f"Health: {pl.health}\t\tDamage(s): {en.damage}")
-    print(f"Level: {pl.level}\t\tLevel: {en.level}")
+    print(f"Health: {pl.health}")
+    print(f"Level: {pl.level}")
+    print("__________________________")
+
+def stats_enemy(en):
+    print("__________________________")
+    print("Enemy stats")
+    print("__________________________")
+    print(f"Damage(s): {en.attack()}")
+    print(f"Level: {en.level}")
     print("__________________________")
 
 
@@ -33,23 +41,22 @@ class Game:
         while p.level <= 100:
             start = input("Enter 'a' to attack, 's' to show stats or 'q' to quit the game: ")
             if start == "a":
-                stats(p, e)
                 print("New enemy attacked")
                 if e.enemy_level(p.level) <= p.level:
+                    stats(p,e)
                     print("You killed the enemy ! \nYou leveled up !!")
                     p.level_up()
                     p.health_up()
-                    stats_now(p,e)
                 elif e.enemy_level(p.level) > p.level:
-                    p.health_lose(e.damage)
                     stats(p,e)
+                    p.health_lose(e.damage)
                     print(f"Outch ! You take {e.damage} damage(s)")
                     print(f"Your life point is now at {p.health} hp")
                 elif p.health <= 0:
+                    stats_player(p)
                     print("You lose this fight. Don't give up and restart!")
-                    stats_now(p,e)
             elif start == "s":
-                stats_now(p,e)
+                stats_player(p)
             elif start == "q":
                 print("Thank you for playing ! See you soon !")
                 quit()
