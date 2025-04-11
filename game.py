@@ -1,8 +1,9 @@
 from player import Player
 from enemy import Enemy
 
-player = Player("Hero", 5, 1)
-enemy = Enemy("Monster", 3)
+player = Player("Hero")
+enemy = Enemy("Monster")
+boss = Enemy("Boss")
 
 def stats(pl, en):
     print("__________________________")
@@ -11,7 +12,6 @@ def stats(pl, en):
     print(f"Health: {pl.health}\t\tHealth: {en.health}")
     print(f"Level: {pl.level}\t\tLevel: {en.level}")
 
-# monster = []
 
 class Game:
     def __init__(self, name):
@@ -34,7 +34,7 @@ class Game:
                 elif e.enemy_level(p.level) > p.level:
                     stats(player, enemy)
                     p.health_lose()
-                    print("Outch ! You take 1 damage")
+                    print(f"Outch ! You take {e.attack()} damage(s)")
                     continue
                 elif p.health <= 0:
                     print("You lose this fight. Don't give up and restart!")
