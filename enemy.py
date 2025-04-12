@@ -16,4 +16,4 @@ class Enemy:
         return self.damage
 
     def __str__(self):
-        return f'name:{self.name}, health:{self.health}, level:{self.level}'
+        return f'Nom:{self.name}, vie:{self.health}, niveau:{self.level}'

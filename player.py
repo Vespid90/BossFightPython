@@ -18,4 +18,4 @@ class Player:
         self.level += 1
 
     def __str__(self):
-        return f'name:{self.name}, health:{self.health}, level:{self.level}'
+        return f'Nom:{self.name}, vie:{self.health}, niveau:{self.level}'
