@@ -48,6 +48,7 @@ class Boss:
     def boss_level(self, player_level):
         self.level = random.randint(player_level - 1, player_level + 1)
         return self.level
+
     def attack(self):
         self.damage = random.randint(self.level +1, self.level +2)
         return self.damage
