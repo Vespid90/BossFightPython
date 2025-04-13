@@ -1,5 +1,5 @@
 from game import Game
 
-game = Game("BossFight")
+game = Game()
 game.start_game()
 

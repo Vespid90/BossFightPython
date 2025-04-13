@@ -11,19 +11,19 @@ text = Text()
 
 
 class Game:
-    def __init__(self, name):
-        self.name = name
+    def __init__(self):
+        self.name = "BossFight"
 
     def start_game(self):
-        text.text_speed("Les brumes du monde ancien s’épaississent... \nDans les ténèbres de la forêt d’Obsydor, des créatures oubliées s’éveillent...\nToi, humble aventurier, tu as entendu l’appel.\nTon voyage commence ici.")
-        print("================================================")
-        text.text_speed("Bienvenue dans l'univers de BossFight !")
-        print("================================================")
-        player.name = input("Quel est ton nom?: \n")
         m = monster
         p = player
+        text.text_speed("Les brumes du monde ancien s’épaississent... \nDans les ténèbres de la forêt d’Obsydor, des créatures oubliées s’éveillent...\nToi, humble aventurier, tu as entendu l’appel.\nTon voyage commence ici.")
+        print("================================================")
+        p.name = input("Quel est ton nom?: \n")
+        print("================================================")
+        text.text_speed(f"Je sens un grand pouvoir émané de toi, {p.name}....\nBienvenue dans l'univers de BossFight !")
         while p.level <= 100:
-            start = input("Entrez: \n'a' pour avancer dans la forêt, \n's' pour voir les statistiques du personnage \n'q' pour quitter l'ancien monde: \n")
+            start = input("Quelle action souhaites-tu faire ?: \n'a' pour avancer dans la forêt, \n's' pour voir les statistiques du personnage \n'q' pour quitter l'ancien monde: \n")
             if start == "a":
                 print("================================================")
                 print("Un nouvel ennemi apparait !")
