@@ -1,13 +1,14 @@
-from player import Player
-from enemy import Enemy
+from character import Player
+from character import Monster
 from stats import Stats
 from text import Text
 
 player = Player("Hero")
-enemy = Enemy("Monster")
+monster = Monster("Monster")
+# boss = Enemy("Boss")
 stats = Stats()
 text = Text()
-# boss = Enemy("Boss")
+
 
 class Game:
     def __init__(self, name):
@@ -19,16 +20,16 @@ class Game:
         text.text_speed("Bienvenue dans l'univers de BossFight !")
         print("==========================================")
         player.name = input("Quel est ton nom?: \n")
-        e = enemy
+        m = monster
         p = player
         while p.level <= 100:
             start = input("Entrez: \n'a' pour avancer dans la forêt, \n's' pour voir les statistiques du personnage \n'q' pour quitter l'ancien monde: \n")
             if start == "a":
-                if e.enemy_level(p.level) > p.level:
+                if m.monster_level(p.level) > p.level:
                     print("Un nouvel ennemi apparait !\nAttention, il attaque !")
-                    stats.stats(p,e)
-                    p.health_lose(e.damage)
-                    print(f"Outch ! Le {e.name} inflige {e.damage} dégâts")
+                    stats.stats(p,m)
+                    p.health_lose(m.damage)
+                    print(f"Outch ! Le {m.name} inflige {m.damage} dégâts")
                     print(f"Tu as maintenant {p.health} points de vie")
                     if p.health <= 0:
                         stats.stats_player(p)
@@ -39,8 +40,8 @@ class Game:
                         continue
                 else:
                     print("Un nouvel ennemi apparait !\nAttention, il attaque !")
-                    stats.stats(p, e)
-                    print(f"Bien joué {p.name}, tu as tué le {e.name} ! \nTu as gagné un niveau !!")
+                    stats.stats(p, m)
+                    print(f"Bien joué {p.name}, tu as tué le {m.name} ! \nTu as gagné un niveau !!")
                     p.level_up()
                     p.health_up()
                     print(f"Tu es maintenant niveau {p.level} et tu as {p.health} points de vie")

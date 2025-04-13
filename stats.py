@@ -1,6 +1,3 @@
-import time
-import sys
-
 class Stats:
     def __init__(self):
         self.name = "Stats"
