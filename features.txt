@@ -1,0 +1,9 @@
+1) à chaque tour aléatoirement ;
+    - combat,
+    - trouve un piège,
+    - se blesse
+    - trouve un objet,
+        - potion de soin qui donne +5hp
+        - bombe de fumée qui permet de fuir un combat
+    - avance mais rien ne se passe
+2) Créer une map (board) en console / PyQT6?
