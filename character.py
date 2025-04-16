@@ -5,14 +5,20 @@ class Player:
         self.name = name
         self.health = 5
         self.level = 1
+        self.inventory = []
+        self.damage = 3
 
     def health_lose(self,enemy_attack):
         self.health -= enemy_attack
         return self.health
 
     def health_up(self):
-        self.health = random.randint(self.health + 2, self.health + 5)
+        self.health = random.randint(self.health + 4, self.health + 7)
         return self.health
+
+    def attack(self):
+        self.damage += random.randint(self.level + 1, self.level + 2)
+        return self.damage
 
     def level_up(self):
         self.level += 1

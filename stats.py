@@ -16,4 +16,5 @@ class Stats:
         print(f"Nom: {pl.name}")
         print(f"Vie: {pl.health}")
         print(f"Niveau: {pl.level}")
+        print(f"Inventaire {pl.inventory}")
         print("================================================")
