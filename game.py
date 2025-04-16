@@ -49,14 +49,39 @@ class Game:
                         print(f"Tu es maintenant niveau {p.level} et tu as {p.health} points de vie")
                         print("================================================")
                         continue
-                elif alea == 1:
+                elif alea == 1: #piege -3 hp
+                    p.health_lose(3)
                     print("Vous êtes tombé sur un piège ! vous perdez 3 points de vie")
-                    p.health(3)
-                elif alea == 2:
-                    pass
-                elif alea == 3:
+                    print(f"Tu as maintenant {p.health} points de vie")
+                    print("================================================")
+                    if p.health <= 0:
+                        print("Tu es mort au combat")
+                        stats.stats_player(p)
+                        quit()
+                    else:
+                        continue
+                elif alea == 2: #se blesse - 1hp
+                    p.health_lose(1)
+                    print("Vous vous blessez en marchant ! vous perdez 1 point1 de vie")
+                    print(f"Tu as maintenant {p.health} points de vie")
+                    print("================================================")
+                    if p.health <= 0:
+                        print("Tu es mort au combat")
+                        stats.stats_player(p)
+                        quit()
+                    else:
+                        continue
+                elif alea == 3: #trouve un objet ; potion(+2 à +5 hp), bombe de fumée(fuite combat) (?)
                     print("Vous avez trouvé un objet !")
-                else:
+                    objet = random.randint(0, 1)
+                    if objet == 0:
+                        p.health_up()
+                        print("Vous avez trouvé une potion de soin !")
+                        print(f"Vous avez maintenant {p.health} point de vie")
+                    else:
+                        print("Vous avez trouvé une bombe de fumée ! Elle vous servira à fuir un combat ")
+                        # p_inventory.append(bombe) -> créer un inventaire
+                else: #avance dans la foret sans événements
                     print("Vous avancez dans la forêt sombre")
                     continue
             elif start == "s":
