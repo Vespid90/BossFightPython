@@ -107,12 +107,12 @@ class Game:
                         p.inventory.append("bombe")
                         print("Vous avez trouvé une bombe de fumée. Elle vous servira à fuir un combat.")
                     elif objet == 10:
-                        bombe = p.inventory("bombe")
-                        if bombe in p.inventory:
+                        if "bombe" in p.inventory:
                             p.health_lose(2)
                             p.inventory.remove("bombe")
                             print("Outch ! La bombe de fumée que vous aviez dans votre inventaire à explosée ! Elle vous inflige 2 points de dégâts")
                         else:
+                            print("Vous pensiez avoir trouvé quelque chose... ce n'était qu'un tas de purin.")
                             continue
                     else:
                         print("Vous pensiez avoir trouvé quelque chose... ce n'était qu'un tas de purin.")
