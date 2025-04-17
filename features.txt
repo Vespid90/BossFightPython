@@ -9,4 +9,13 @@
             - Mettre des stats aux equipements
             - si 3x le même equipement dropé -> fusion et stats +1
     - avance mais rien ne se passe
+    - croiser un marchant (achat/vente d'objet)
 2) Créer une map (board) en console / PyQT6?
+
+
+
+à dev:
+- gagner de l'or (entre 2 et 10 po) quand on tue un monstre
+- système d'achat/vente d'équipement
+- marchant
+- ajouter une bande sonore
