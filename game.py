@@ -19,14 +19,14 @@ class Game:
         m = monster
         p = player
         text.text_speed("Les brumes du monde ancien s’épaississent... \nDans les ténèbres de la forêt d’Obsydor, des créatures oubliées s’éveillent...\nVous, humble aventurier, vous avez entendu l’appel.\nVotre voyage commence ici.")
-        print("================================================")
+        print("═════════════════════════════════════════════════")
         p.name = input("Quel est votre nom?: \n")
-        print("================================================")
+        print("=================================================")
         text.text_speed(f"Je sens un grand pouvoir émané de vous, {p.name}....\nBienvenue dans l'univers de BossFight !")
         while p.level <= 100:
             start = input("Quelle action souhaitez-vous faire ?: \n'a' pour avancer dans la forêt, \n's' pour voir les statistiques du personnage \n'q' pour quitter la fôret d'Obsydor: \n")
             if start == "a":
-                print("================================================")
+                print("═════════════════════════════════════════════════")
                 alea = random.randint(0, 0) #Début des événements aléatoires
                 text.text_speed("Vous avancez dans la forêt...")
                 # ================= DEBUT COMBAT VS MONSTER =================
@@ -38,7 +38,7 @@ class Game:
                         p.health_lose(m.damage)
                         print(f"Outch ! Le {m.name} inflige {m.damage} dégâts.")
                         print(f"Vous avez maintenant {p.health} ❤️points de vie.")
-                        print("================================================")
+                        print("═════════════════════════════════════════════════")
                         if p.health <= 0:
                             print("Vous êtes mort au combat.")
                             stats.stats_player(p)
@@ -51,7 +51,7 @@ class Game:
                         p.level_up()
                         p.health_up()
                         print(f"Vous êtes maintenant niveau {p.level} et vous avez {p.health} ❤️ points de vie.")
-                        print("================================================")
+                        print("═════════════════════════════════════════════════")
                         continue
                     else:
                         stats.stats(p, m)
@@ -62,7 +62,7 @@ class Game:
                     p.health_lose(3)
                     print("Vous êtes tombé sur un piège ! vous perdez 3 points de vie.")
                     print(f"Vous avez maintenant {p.health} ❤️ points de vie.")
-                    print("================================================")
+                    print("═════════════════════════════════════════════════")
                     if p.health <= 0:
                         print("Vous êtes mort au combat.")
                         stats.stats_player(p)
@@ -73,7 +73,7 @@ class Game:
                     p.health_lose(1)
                     print("Vous vous blessez en marchant ! Vous perdez 1 point de vie.")
                     print(f"Vous avez maintenant {p.health} ❤️ points de vie.")
-                    print("================================================")
+                    print("═════════════════════════════════════════════════")
                     if p.health <= 0:
                         print("Vous êtes mort au combat.")
                         stats.stats_player(p)
@@ -119,8 +119,8 @@ class Game:
                 stats.stats_player(p)
             elif start == "q":
                 print("Merci d'avoir joué ! A bientôt!")
-                print("================================================")
+                print("═════════════════════════════════════════════════")
                 quit()
             else:
                 print("Vous devez choisir entre 'a', 's' ou 'q' !")
-                print("================================================")
+                print("═════════════════════════════════════════════════")
