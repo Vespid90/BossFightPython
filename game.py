@@ -27,7 +27,7 @@ class Game:
             start = input("Quelle action souhaitez-vous faire ?: \n'a' pour avancer dans la forêt, \n's' pour voir les statistiques du personnage \n'q' pour quitter la fôret d'Obsydor: \n")
             if start == "a":
                 print("═════════════════════════════════════════════════")
-                alea = random.randint(0, 0) #Début des événements aléatoires
+                alea = random.randint(0, 3) #Début des événements aléatoires
                 text.text_speed("Vous avancez dans la forêt...")
                 # ================= DEBUT COMBAT VS MONSTER =================
                 if alea == 0:
@@ -36,8 +36,8 @@ class Game:
                     if lvl_enemy > p.level:
                         stats.stats(p, m)
                         p.health_lose(m.damage)
-                        print(f"Outch ! Le {m.name} inflige {m.damage} dégâts.")
-                        print(f"Vous avez maintenant {p.health} ❤️points de vie.")
+                        print(f"Outch ! Le {m.name} inflige ⚔️ {m.damage} dégâts.")
+                        print(f"Vous avez maintenant ❤️ {p.health} points de vie.")
                         print("═════════════════════════════════════════════════")
                         if p.health <= 0:
                             print("Vous êtes mort au combat.")
@@ -47,10 +47,10 @@ class Game:
                             continue
                     elif lvl_enemy <= p.level:
                         stats.stats(p, m)
-                        print(f"Bien joué {p.name}, vous avez tué le {m.name} ! \nVous avez gagné un niveau !!")
+                        print(f"Bien joué {p.name}, vous avez tué le {m.name} ! \nVous avez gagné un niveau 🆙!")
                         p.level_up()
                         p.health_up()
-                        print(f"Vous êtes maintenant niveau {p.level} et vous avez {p.health} ❤️ points de vie.")
+                        print(f"Vous êtes maintenant niveau ⬆️ {p.level} et vous avez {p.health} ❤️ points de vie.")
                         print("═════════════════════════════════════════════════")
                         continue
                     else:
@@ -89,14 +89,14 @@ class Game:
                     if objet == "Potion de soin" or objet == "Collier de soin":
                         p.health_up()
                         if objet == "Potion de soin":
-                            print(f"Vous avez trouvé une 🧪{objet}🧪 .")
-                            print(f"Vous avez maintenant {p.health} ❤️point(s) de vie.")
+                            print(f"Vous avez trouvé une {objet}.")
+                            print(f"Vous avez maintenant ❤️ {p.health} point(s) de vie.")
                         else:
-                            print(f"Vous avez trouvé un 📿{objet}📿 .")
-                            print(f"Vous avez maintenant {p.health} ❤️point(s) de vie.")
+                            print(f"Vous avez trouvé un {objet}.")
+                            print(f"Vous avez maintenant ❤️ {p.health} point(s) de vie.")
                     elif objet == "Bombe":
                         p.inventory.append("Bombe")
-                        print("Vous avez trouvé une 💣 Bombe de fumée 💣. Elle vous servira à fuir un combat.")
+                        print("Vous avez trouvé une 💣Bombe de fumée 💣. Elle vous servira à fuir un combat.")
                     elif objet == "Explose":
                         if "bombe" in p.inventory:
                             p.health_lose(2)

@@ -5,8 +5,8 @@ class Player:
         self.name = name
         self.health = 5
         self.level = 1
-        self.inventory = []
         self.damage = 3
+        self.inventory = []
 
     def health_lose(self,enemy_attack):
         self.health -= enemy_attack
