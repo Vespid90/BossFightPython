@@ -5,5 +5,8 @@
     - trouve un objet,
         - potion de soin qui donne +5hp
         - bombe de fumée qui permet de fuir un combat
+        - Equipement (casque, armure, brassard, ...)
+            - Mettre des stats aux equipements
+            - si 3x le même equipement dropé -> fusion et stats +1
     - avance mais rien ne se passe
 2) Créer une map (board) en console / PyQT6?
