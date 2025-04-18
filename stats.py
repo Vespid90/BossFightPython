@@ -1,6 +1,4 @@
-from text import Text, Interface
-
-text = Text()
+from text import Interface
 
 class Stats:
     def __init__(self):

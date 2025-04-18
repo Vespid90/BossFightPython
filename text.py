@@ -1,9 +1,47 @@
 import time
 import sys
 
-class Text():
+
+class Interface:
     def __init__(self):
-        self.name = "text"
+        self.name = "Interface"
+
+    @staticmethod
+    def separate_logic():
+        print("═════════════════════════════════════════════════")
+
+    @staticmethod
+    def separate_elem():
+        print("=================================================")
+
+    @staticmethod
+    def logo():
+        return """
+                        ______                _______        _     _
+                        | ___ \               |  ___(_)     | |   | |
+                        | |_/ / ___  ___ ___  | |_   _  __ _| |__ | |_
+                        | ___ \/ _ \/ __/ __| |  _| | |/ _` | '_ \| __|
+                        | |_/ / (_) \__ \__ \ | |   | | (_| | | | | |_
+                        \____/ \___/|___/___/ \_|   |_|\__, |_| |_|\__|
+                                                        __/ |
+                                                       |___/
+                             /   ))     |\         )               ).
+                       c--. (\  ( `.    / )  (\   ( `.     ).     ( (
+                       | |   ))  ) )   ( (   `.`.  ) )    ( (      ) )
+                       | |  ( ( / _..----.._  ) | ( ( _..----.._  ( (
+         ,-.           | |---) V.'-------.. `-. )-/.-' ..------ `--) \._
+         | /===========| |  (   |      ) ( ``-.`\/'.-''           (   ) ``-._
+         | | / / / / / | |--------------------->  <-------------------------_>=-
+         | \===========| |                 ..-'./\.`-..                _,,-'
+         `-'           | |-------._------''_.-'----`-._``------_.-----'
+                       | |         ``----''            ``----''
+                       | |
+                       c--`                                                   """
+
+
+class TextDialogue:
+    def __init__(self):
+        self.name = "dialogue system"
 
     @staticmethod
     def text_speed(texte, delai=0.01):
@@ -41,6 +79,12 @@ class Text():
     def go_wood():
         return "Vous avancez dans la forêt..."
 
+
+
+class TextFight:
+    def __init__(self):
+        self.name = "figting system"
+
     @staticmethod
     def new_enemy_appear():
          print("Un nouvel ennemi apparait !")
@@ -59,46 +103,38 @@ class Text():
         print(f"Vous avez maintenant ❤️ {player_health} points de vie.")
 
     @staticmethod
-    def trap_damages(player_health):
-        print(f"Vous êtes tombé sur un piège ! vous perdez 3 points de vie.")
+    def trap_damages(player_health_lose, player_health):
+        print(f"Vous êtes tombé sur un piège ! vous perdez {player_health_lose} points de vie.")
+        print(f"Vous avez maintenant {player_health} ❤️ points de vie.")
+
+    @staticmethod
+    def walk_damage(player_health_lose,player_health):
+        print(f"Vous vous blessez en marchant ! Vous perdez {player_health_lose} point de vie.")
         print(f"Vous avez maintenant {player_health} ❤️ points de vie.")
 
     @staticmethod
     def p_dead():
         print("Vous êtes mort au combat.💀")
 
-class Interface():
+
+class TextItem:
     def __init__(self):
-        self.name = "Interface"
+        self.name = "item system"
 
     @staticmethod
-    def separate_logic():
-        print("═════════════════════════════════════════════════")
+    def obj():
+        return ["Explose", "Potion de soin", "Collier de soin", "Epée", "Bouclier", "Casque", "Armure", "Jambière", "Botte", "Gants", "Brassard", "Bombe"]
 
     @staticmethod
-    def separate_elem():
-        print("=================================================")
+    def go_search():
+        return "Vous fouillez les alentours..."
 
     @staticmethod
-    def logo():
-        return """
-                        ______                _______        _     _
-                        | ___ \               |  ___(_)     | |   | |
-                        | |_/ / ___  ___ ___  | |_   _  __ _| |__ | |_
-                        | ___ \/ _ \/ __/ __| |  _| | |/ _` | '_ \| __|
-                        | |_/ / (_) \__ \__ \ | |   | | (_| | | | | |_
-                        \____/ \___/|___/___/ \_|   |_|\__, |_| |_|\__|
-                                                        __/ |
-                                                       |___/
-                             /   ))     |\         )               ).
-                       c--. (\  ( `.    / )  (\   ( `.     ).     ( (
-                       | |   ))  ) )   ( (   `.`.  ) )    ( (      ) )
-                       | |  ( ( / _..----.._  ) | ( ( _..----.._  ( (
-         ,-.           | |---) V.'-------.. `-. )-/.-' ..------ `--) \._
-         | /===========| |  (   |      ) ( ``-.`\/'.-''           (   ) ``-._
-         | | / / / / / | |--------------------->  <-------------------------_>=-
-         | \===========| |                 ..-'./\.`-..                _,,-'
-         `-'           | |-------._------''_.-'----`-._``------_.-----'
-                       | |         ``----''            ``----''
-                       | |
-                       c--`                                                   """
+    def healing_pot(item, player_health):
+        print(f"Vous avez trouvé une {item}.")
+        print(f"Vous avez maintenant ❤️ {player_health} point(s) de vie.")
+
+    @staticmethod
+    def healing_neck(item, player_health):
+        print(f"Vous avez trouvé un {item}.")
+        print(f"Vous avez maintenant ❤️ {player_health} point(s) de vie.")
