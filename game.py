@@ -20,36 +20,16 @@ class Game:
     def start_game(self):
         m = monster
         p = player
- #        text.title_speed("""
- #                ______                _______        _     _
- #                | ___ \               |  ___(_)     | |   | |
- #                | |_/ / ___  ___ ___  | |_   _  __ _| |__ | |_
- #                | ___ \/ _ \/ __/ __| |  _| | |/ _` | '_ \| __|
- #                | |_/ / (_) \__ \__ \ | |   | | (_| | | | | |_
- #                \____/ \___/|___/___/ \_|   |_|\__, |_| |_|\__|
- #                                                __/ |
- #                                               |___/
- #                     /   ))     |\         )               ).
- #               c--. (\  ( `.    / )  (\   ( `.     ).     ( (
- #               | |   ))  ) )   ( (   `.`.  ) )    ( (      ) )
- #               | |  ( ( / _..----.._  ) | ( ( _..----.._  ( (
- # ,-.           | |---) V.'-------.. `-. )-/.-' ..------ `--) \._
- # | /===========| |  (   |      ) ( ``-.`\/'.-''           (   ) ``-._
- # | | / / / / / | |--------------------->  <-------------------------_>=-
- # | \===========| |                 ..-'./\.`-..                _,,-'
- # `-'           | |-------._------''_.-'----`-._``------_.-----'
- #               | |         ``----''            ``----''
- #               | |
- #               c--`                                                   """)
- #        text.text_speed("Les brumes du monde ancien s’épaississent... \nDans les ténèbres de la forêt d’Obsydor, des créatures oubliées s’éveillent...\nVous, humble aventurier, vous avez entendu l’appel.\nVotre voyage commence ici.")
- #        text.separate_logic()
+        text.title_speed(text.logo())
+        text.text_speed(text.intro())
+        text.separate_logic()
         p.name = input("Quel est votre nom?: \n")
         # text.clear_screen()
         text.separate_elem()
-        text.text_speed(f"Je sens un grand pouvoir émaner de vous, {p.name}....\nBienvenue dans l'univers de BossFight !")
+        text.text_speed(text.power(p.name))
         while p.level <= 100:
-            start = input("Quelle action souhaitez-vous faire ?: \n'a' pour avancer dans la forêt, \n's' pour voir les statistiques du personnage \n'q' pour quitter la fôret d'Obsydor: \n")
-            if start == "a":
+            menu = text.game_menu()
+            if menu == "a":
                 text.separate_logic()
                 alea = random.randint(0, 0) #Début des événements aléatoires ; à adapter pour faire les tests
                 text.text_speed("Vous avancez dans la forêt...")
@@ -149,9 +129,9 @@ class Game:
                     text.text_speed("Tout semble calme, pour l'instant.")
                     continue
                 # ================= FIN VOYAGE FORET =================
-            elif start == "s":
+            elif menu == "s":
                 stats.stats_player(p)
-            elif start == "q":
+            elif menu == "q":
                 print("Merci d'avoir joué ! A bientôt!")
                 text.separate_logic()
                 quit()

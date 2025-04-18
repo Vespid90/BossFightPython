@@ -15,6 +15,7 @@
 
 
 à dev:
+- refacto du systeme de combats ; le joueur inflige des dégâts et ne gagne plus automatiquement le combat si p.lvl > m.lvl
 - gagner de l'or (entre 2 et 10 po) quand on tue un monstre
 - système d'achat/vente d'équipement
 - marchant
