@@ -1,11 +1,12 @@
 # from game import monster
 # from game import player
+from stats import Stats
 import random
 import time
 import sys
 import os
 
-
+stats = Stats()
 # m = monster
 # p = player
 
@@ -30,24 +31,48 @@ class Text():
     def new_enemy_appear(self):
         print("Un nouvel ennemi apparait !")
 
-    def take_damage(self):
-        print(f"Outch ! Le {m.name} inflige ⚔️ {m.damage} dégâts.")
-        print(f"Vous avez maintenant ❤️ {p.health} points de vie.")
+    def e_killed(self, player_name, monster_name):
+        print(f"Bien joué {player_name}, vous avez tué le {monster_name} ! \nVous avez gagné un niveau 🆙!")
 
-    def player_dead(self):
+    def lvl_up(self, player_lvl, player_health):
+        print(f"Vous êtes maintenant niveau ⬆️ {player_lvl} et vous avez {player_health} ❤️ points de vie.")
+
+    def take_damage(self, monster_name, monster_damage, player_health):
+        print(f"Outch ! Le {monster_name} inflige ⚔️ {monster_damage} dégâts.")
+        print(f"Vous avez maintenant ❤️ {player_health} points de vie.")
+
+    def trap_damages(self, player_health):
+        print(f"Vous êtes tombé sur un piège ! vous perdez 3 points de vie.")
+        print(f"Vous avez maintenant {player_health} ❤️ points de vie.")
+
+    def p_dead(self):
         print("Vous êtes mort au combat.💀")
-
-    # def clear_screen(self):
-    #     if sys.platform.startswith('win'):
-    #         os.system('cls')
-    #     else:
-    #         os.system('clear')
-
-    # def clear_screen(self):
-    #     print("\033c", end="")
 
     def separate_logic(self):
         print("═════════════════════════════════════════════════")
 
     def separate_elem(self):
         print("=================================================")
+
+    # def logo(self):
+    #     """
+    #                     ______                _______        _     _
+    #                     | ___ \               |  ___(_)     | |   | |
+    #                     | |_/ / ___  ___ ___  | |_   _  __ _| |__ | |_
+    #                     | ___ \/ _ \/ __/ __| |  _| | |/ _` | '_ \| __|
+    #                     | |_/ / (_) \__ \__ \ | |   | | (_| | | | | |_
+    #                     \____/ \___/|___/___/ \_|   |_|\__, |_| |_|\__|
+    #                                                     __/ |
+    #                                                    |___/
+    #                          /   ))     |\         )               ).
+    #                    c--. (\  ( `.    / )  (\   ( `.     ).     ( (
+    #                    | |   ))  ) )   ( (   `.`.  ) )    ( (      ) )
+    #                    | |  ( ( / _..----.._  ) | ( ( _..----.._  ( (
+    #      ,-.           | |---) V.'-------.. `-. )-/.-' ..------ `--) \._
+    #      | /===========| |  (   |      ) ( ``-.`\/'.-''           (   ) ``-._
+    #      | | / / / / / | |--------------------->  <-------------------------_>=-
+    #      | \===========| |                 ..-'./\.`-..                _,,-'
+    #      `-'           | |-------._------''_.-'----`-._``------_.-----'
+    #                    | |         ``----''            ``----''
+    #                    | |
+    #                    c--`                                                   """

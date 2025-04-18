@@ -20,29 +20,29 @@ class Game:
     def start_game(self):
         m = monster
         p = player
-        text.title_speed("""
-                ______                _______        _     _   
-                | ___ \               |  ___(_)     | |   | |  
-                | |_/ / ___  ___ ___  | |_   _  __ _| |__ | |_ 
-                | ___ \/ _ \/ __/ __| |  _| | |/ _` | '_ \| __|
-                | |_/ / (_) \__ \__ \ | |   | | (_| | | | | |_ 
-                \____/ \___/|___/___/ \_|   |_|\__, |_| |_|\__|
-                                                __/ |          
-                                               |___/                                     
-                     /   ))     |\         )               ).           
-               c--. (\  ( `.    / )  (\   ( `.     ).     ( (           
-               | |   ))  ) )   ( (   `.`.  ) )    ( (      ) )          
-               | |  ( ( / _..----.._  ) | ( ( _..----.._  ( (           
- ,-.           | |---) V.'-------.. `-. )-/.-' ..------ `--) \._        
- | /===========| |  (   |      ) ( ``-.`\/'.-''           (   ) ``-._   
- | | / / / / / | |--------------------->  <-------------------------_>=-
- | \===========| |                 ..-'./\.`-..                _,,-'    
- `-'           | |-------._------''_.-'----`-._``------_.-----'         
-               | |         ``----''            ``----''                  
-               | |                                                       
-               c--`                                                   """)
-        text.text_speed("Les brumes du monde ancien s’épaississent... \nDans les ténèbres de la forêt d’Obsydor, des créatures oubliées s’éveillent...\nVous, humble aventurier, vous avez entendu l’appel.\nVotre voyage commence ici.")
-        text.separate_logic()
+ #        text.title_speed("""
+ #                ______                _______        _     _
+ #                | ___ \               |  ___(_)     | |   | |
+ #                | |_/ / ___  ___ ___  | |_   _  __ _| |__ | |_
+ #                | ___ \/ _ \/ __/ __| |  _| | |/ _` | '_ \| __|
+ #                | |_/ / (_) \__ \__ \ | |   | | (_| | | | | |_
+ #                \____/ \___/|___/___/ \_|   |_|\__, |_| |_|\__|
+ #                                                __/ |
+ #                                               |___/
+ #                     /   ))     |\         )               ).
+ #               c--. (\  ( `.    / )  (\   ( `.     ).     ( (
+ #               | |   ))  ) )   ( (   `.`.  ) )    ( (      ) )
+ #               | |  ( ( / _..----.._  ) | ( ( _..----.._  ( (
+ # ,-.           | |---) V.'-------.. `-. )-/.-' ..------ `--) \._
+ # | /===========| |  (   |      ) ( ``-.`\/'.-''           (   ) ``-._
+ # | | / / / / / | |--------------------->  <-------------------------_>=-
+ # | \===========| |                 ..-'./\.`-..                _,,-'
+ # `-'           | |-------._------''_.-'----`-._``------_.-----'
+ #               | |         ``----''            ``----''
+ #               | |
+ #               c--`                                                   """)
+ #        text.text_speed("Les brumes du monde ancien s’épaississent... \nDans les ténèbres de la forêt d’Obsydor, des créatures oubliées s’éveillent...\nVous, humble aventurier, vous avez entendu l’appel.\nVotre voyage commence ici.")
+ #        text.separate_logic()
         p.name = input("Quel est votre nom?: \n")
         # text.clear_screen()
         text.separate_elem()
@@ -51,7 +51,7 @@ class Game:
             start = input("Quelle action souhaitez-vous faire ?: \n'a' pour avancer dans la forêt, \n's' pour voir les statistiques du personnage \n'q' pour quitter la fôret d'Obsydor: \n")
             if start == "a":
                 text.separate_logic()
-                alea = random.randint(0, 3) #Début des événements aléatoires
+                alea = random.randint(0, 0) #Début des événements aléatoires ; à adapter pour faire les tests
                 text.text_speed("Vous avancez dans la forêt...")
                 # ================= DEBUT COMBAT VS MONSTER =================
                 if alea == 0:
@@ -60,22 +60,20 @@ class Game:
                     if lvl_enemy > p.level:
                         stats.stats(p, m)
                         p.health_lose(m.damage)
-                        # text.take_damage()
-                        print(f"Outch ! Le {m.name} inflige ⚔️ {m.damage} dégâts.")
-                        print(f"Vous avez maintenant ❤️ {p.health} points de vie.")
+                        text.take_damage(m.name, m.damage, p.health)
                         text.separate_logic()
                         if p.health <= 0:
-                            text.player_dead()
+                            text.p_dead()
                             stats.stats_player(p)
                             quit()
                         else:
                             continue
                     elif lvl_enemy <= p.level:
                         stats.stats(p, m)
-                        print(f"Bien joué {p.name}, vous avez tué le {m.name} ! \nVous avez gagné un niveau 🆙!")
+                        text.e_killed(p.name, m.name)
                         p.level_up()
                         p.health_up()
-                        print(f"Vous êtes maintenant niveau ⬆️ {p.level} et vous avez {p.health} ❤️ points de vie.")
+                        text.lvl_up(p.level, p.health)
                         text.separate_logic()
                         continue
                     else:
@@ -85,11 +83,10 @@ class Game:
                     # ================= DEBUT SYSTEME DE PIEGE =================
                 elif alea == 1: #piege
                     p.health_lose(3)
-                    print(f"Vous êtes tombé sur un piège ! vous perdez 3 points de vie.")
-                    print(f"Vous avez maintenant {p.health} ❤️ points de vie.")
+                    text.trap_damages(p.health)
                     text.separate_logic()
                     if p.health <= 0:
-                        text.player_dead()
+                        text.p_dead()
                         stats.stats_player(p)
                         quit()
                     else:
@@ -100,7 +97,7 @@ class Game:
                     print(f"Vous avez maintenant {p.health} ❤️ points de vie.")
                     text.separate_logic()
                     if p.health <= 0:
-                        text.player_dead()
+                        text.p_dead()
                         stats.stats_player(p)
                         quit()
                     else:
@@ -133,7 +130,7 @@ class Game:
                             print("Outch ! La bombe de fumée que vous aviez dans votre inventaire à 💥💥explosée 💥💥 ! Elle vous inflige 2 points de dégâts")
                             text.separate_logic()
                             if p.health <= 0:
-                                text.player_dead()
+                                text.p_dead()
                                 stats.stats_player(p)
                                 quit()
                             else:
