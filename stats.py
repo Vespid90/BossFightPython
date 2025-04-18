@@ -12,9 +12,9 @@ class Stats:
         Interface.separate_logic()
         print(f"Nom: {pl.name:<20} Nom: {en.name:<20}")
         print(f"⬆️ Niveau: {pl.level:<14} ⬆️ Niveau: {en.level:<20}")
-        print(f"❤️ Vie: {pl.health:<16}️ ❤️ Vie: {en.health:<20}")
+        print(f"❤️ Vie: {pl.health:<16}️ ❤️ Vie: {en.health_up():<20}")
         print(f"⚔️ Dégâts: {pl.damage:<14} ⚔️ Dégâts: {en.attack():<20}")
-        # print(f"🛡️ Défense: {pl.defense: <20} 🛡️ Défense: {en.defense: <20}️")
+        print(f"🛡️ Défense: {pl.defense: <13} 🛡️ Défense: {en.defense_up(): <20}️")
         Interface.separate_logic()
 
     @staticmethod
@@ -24,9 +24,9 @@ class Stats:
         Interface.separate_elem()
         print(f"Nom: {pl.name}")
         print(f"⬆️ Niveau: {pl.level}")
-        print(f"❤️ Vie: {pl.health}️")
+        print(f"❤️ Vie: {pl.health}")
         print(f"⚔️ Dégâts: {pl.damage:<20}")
-        # print(f"🛡️ Défense: {pl.defense: <20}")
+        print(f"🛡️️ Défense: {pl.defense: <20}")
         Interface.separate_elem()
         print("🎒 Inventaire: ")
         print(f"{pl.inventory}")

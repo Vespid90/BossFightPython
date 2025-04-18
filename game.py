@@ -16,9 +16,9 @@ class Game:
     def start_game():
         m = monster
         p = player
-        Text.title_speed(Interface.logo())
-        Text.text_speed(Text.intro())
-        Interface.separate_logic()
+        # Text.title_speed(Interface.logo())
+        # Text.text_speed(Text.intro())
+        # Interface.separate_logic()
         p.name = Text.player_name()
         # Text.clear_screen()
         Interface.separate_elem()
@@ -27,7 +27,9 @@ class Game:
             menu = Text.game_menu()
             if menu == "a":
                 Interface.separate_logic()
-                alea = random.randint(0, 0) #Début des événements aléatoires ; à adapter pour faire les tests
+                # Début des événements aléatoires ; variable "alea" à adapter pour les tests
+                # 0 = combats ; 1 = piege ; 2 = se blesse ; 3 = trouve un objet ;
+                alea = random.randint(0, 0)
                 Text.text_speed(Text.go_wood())
                 # ================= DEBUT COMBAT VS MONSTER =================
                 if alea == 0:
@@ -48,7 +50,6 @@ class Game:
                         Stats.stats(p, m)
                         Text.e_killed(p.name, m.name)
                         p.level_up()
-                        p.health_up()
                         Text.lvl_up(p.level, p.health)
                         Interface.separate_logic()
                         continue
