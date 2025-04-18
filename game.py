@@ -97,13 +97,14 @@ class Game:
                             Interface.separate_logic()
                     elif objet == "Bombe":
                         p.inventory.append("Bombe")
-                        print("Vous avez trouvé une 💣Bombe de fumée 💣. Elle vous servira à fuir un combat.")
+                        TextItem.find_bomber()
                         Interface.separate_logic()
                     elif objet == "Explose":
                         if "bombe" in p.inventory:
-                            p.health_lose(2)
+                            health_lose = 2
+                            p.health_lose(health_lose)
                             p.inventory.remove("bombe")
-                            print("Outch ! La bombe de fumée que vous aviez dans votre inventaire à 💥💥explosée 💥💥 ! Elle vous inflige 2 points de dégâts")
+                            TextItem.explose_bomber(health_lose)
                             Interface.separate_logic()
                             if p.health <= 0:
                                 TextFight.p_dead()
@@ -112,12 +113,11 @@ class Game:
                             else:
                                 continue
                         else:
-                            print("Vous pensiez avoir trouvé quelque chose... ce n'était qu'un tas de purin.")
+                            TextItem.shit()
                             continue
                     else:
                         p.inventory.append(objet)
-                        print(f"Vous avez trouvé l'objet {objet}.")
-                        print("Vous l'ajoutez à votre inventaire")
+                        TextItem.find_item(objet)
                         Interface.separate_logic()
                 # ================= FIN SYSTEME D'OBJET =================
                 # ================= DEBUT VOYAGE FORET =================

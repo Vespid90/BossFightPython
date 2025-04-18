@@ -138,3 +138,24 @@ class TextItem:
     def healing_neck(item, player_health):
         print(f"Vous avez trouvé un {item}.")
         print(f"Vous avez maintenant ❤️ {player_health} point(s) de vie.")
+
+    @staticmethod
+    def find_bomber():
+        print("Vous avez trouvé une 💣Bombe de fumée 💣. Elle vous servira à fuir un combat.")
+
+    @staticmethod
+    def explose_bomber(player_health_lose):
+        print(f"Outch ! La bombe de fumée que vous aviez dans votre inventaire à 💥💥explosée 💥💥 ! Elle vous inflige {player_health_lose} points de dégâts")
+
+    @staticmethod
+    def shit():
+        print("Vous pensiez avoir trouvé quelque chose... ce n'était qu'un tas de purin.")
+
+    @staticmethod
+    def find_item(item):
+        print(f"Vous avez trouvé l'objet {item}.")
+        print("Vous l'ajoutez à votre inventaire")
+
+
+
+
