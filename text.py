@@ -39,6 +39,7 @@ class Interface:
                        c--`                                                   """
 
 
+
 class TextDialogue:
     def __init__(self):
         self.name = "dialogue system"
@@ -70,6 +71,14 @@ class TextDialogue:
     @staticmethod
     def game_menu():
         return input("Quelle action souhaitez-vous faire ?: \n'a' pour avancer dans la forêt, \n's' pour voir les statistiques du personnage \n'q' pour quitter la fôret d'Obsydor: \n")
+
+    @staticmethod
+    def thanks_for_playing():
+        print("Merci d'avoir joué ! A bientôt!")
+
+    @staticmethod
+    def need_to_choice():
+        print("Vous devez choisir entre 'a', 's' ou 'q' !")
 
     @staticmethod
     def power(player_name):
@@ -117,6 +126,7 @@ class TextFight:
         print("Vous êtes mort au combat.💀")
 
 
+
 class TextItem:
     def __init__(self):
         self.name = "item system"
@@ -158,4 +168,10 @@ class TextItem:
 
 
 
+class TextForest:
+    def __init__(self):
+        self.name = "forest system"
 
+    @staticmethod
+    def calm():
+        return "Tout semble calme... pour l'instant."

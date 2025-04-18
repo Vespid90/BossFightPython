@@ -1,7 +1,7 @@
 from character import Player
 from character import Monster
 from stats import Stats
-from text import TextDialogue, TextFight, TextItem, Interface
+from text import TextDialogue, TextFight, TextItem, Interface, TextForest
 import random
 
 player = Player("Hero")
@@ -25,6 +25,7 @@ class Game:
         TextDialogue.text_speed(TextDialogue.power(p.name))
         while p.level <= 100:
             menu = TextDialogue.game_menu()
+            # ================= DEBUT MENU DU DIALOGUE ==================
             if menu == "a":
                 Interface.separate_logic()
                 # Début des événements aléatoires ; variable "alea" à adapter pour les tests
@@ -56,8 +57,8 @@ class Game:
                     else:
                         Stats.stats(p, m)
                         print("error")
-                    # ================= FIN COMBAT VS MONSTER =================
-                    # ================= DEBUT SYSTEME DE PIEGE =================
+                # ================= FIN COMBAT VS MONSTER ==================
+                # ================= DEBUT SYSTEME DE PIEGE =================
                 elif alea == 1: #piege
                     health_lose = 3
                     p.health_lose(health_lose)
@@ -81,7 +82,7 @@ class Game:
                     else:
                         continue
                 # ================= FIN SYSTEME DE PIEGE =================
-                # ================= DEBUT SYSTEME D'OBJET =================
+                # ================= DEBUT SYSTEME D'OBJET ================
                 elif alea == 3: #trouve un objet
                     obj = TextItem.obj()
                     TextItem.go_search()
@@ -120,17 +121,18 @@ class Game:
                         TextItem.find_item(objet)
                         Interface.separate_logic()
                 # ================= FIN SYSTEME D'OBJET =================
-                # ================= DEBUT VOYAGE FORET =================
+                # ================= DEBUT VOYAGE FORET ==================
                 else: #avance dans la foret sans événements
-                    TextDialogue.text_speed("Tout semble calme, pour l'instant.")
+                    TextDialogue.text_speed(TextForest.calm())
                     continue
                 # ================= FIN VOYAGE FORET =================
+            # ================= AUTRE CHOIX DU DIALOGUE ==================
             elif menu == "s":
                 Stats.stats_player(p)
             elif menu == "q":
-                print("Merci d'avoir joué ! A bientôt!")
+                TextDialogue.thanks_for_playing()
                 Interface.separate_logic()
                 quit()
             else:
-                print("Vous devez choisir entre 'a', 's' ou 'q' !")
+                TextDialogue.need_to_choice()
                 Interface.separate_logic()

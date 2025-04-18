@@ -23,7 +23,6 @@ class Player:
         self.health = random.randint(self.health + 2, self.health + 5)
         return self.health
 
-
     def __str__(self):
         return f'Nom:{self.name}, ❤️ vie:{self.health}, ⬆️ niveau:{self.level}'
 
