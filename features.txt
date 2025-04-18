@@ -1,14 +1,14 @@
 1) à chaque tour aléatoirement ;
     - combat,
-    - trouve un piège,
-    - se blesse
+    - trouve un piège - done
+    - se blesse - done
     - trouve un objet,
-        - potion de soin qui donne +5hp
-        - bombe de fumée qui permet de fuir un combat
-        - Equipement (casque, armure, brassard, ...)
-            - Mettre des stats aux equipements
+        - potion de soin qui donne +5hp - done
+        - bombe de fumée qui permet de fuir un combat - done
+        - Equipement (casque, armure, brassard, ...) - done
+            - Mettre des stats aux equipements (créer une classe stuff avec des dictionnaires)
             - si 3x le même equipement dropé -> fusion et stats +1
-    - avance mais rien ne se passe
+    - avance mais rien ne se passe - done
     - croiser un marchant (achat/vente d'objet)
 2) Créer une map (board) en console / PyQT6?
 
@@ -16,6 +16,7 @@
 
 à dev:
 - refacto du systeme de combats ; le joueur inflige des dégâts et ne gagne plus automatiquement le combat si p.lvl > m.lvl
+- system de fuite d'un combat (50% SAUF si bombe de fumée dans l'inventaire -> 100%)
 - gagner de l'or (entre 2 et 10 po) quand on tue un monstre
 - système d'achat/vente d'équipement
 - marchant
