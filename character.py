@@ -15,12 +15,12 @@ class Player:
 
     def level_up(self):
         self.level += 1
-        self.health = random.randint(self.health + 1, self.health + 2)
-        self.damage = random.randint(self.level + 2, self.level + 4)
-        self.defense = random.randint(self.defense + 1, self.defense + 2)
+        self.health = random.randint(int(self.health) + 1, int(self.health) + 2)
+        self.damage = random.randint(int(self.level) + 2, int(self.level) + 4)
+        self.defense = random.randint(int(self.defense) + 1, int(self.defense) + 2)
 
     def health_up(self):
-        self.health = random.randint(self.health + 2, self.health + 5)
+        self.health = random.randint(int(self.health) + 2, int(self.health) + 5)
         return self.health
 
     def __str__(self):
