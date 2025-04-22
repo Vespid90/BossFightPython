@@ -7,6 +7,7 @@ class Player:
         self.level = 1
         self.damage = 2
         self.defense = 1
+        self.stuff = {"head": "", "torso": "", "legs":"", "feet":"", "arms":"", "off_hand":"", "main_hand":"", "hands":""}
         self.inventory = []
 
     def health_lose(self,enemy_attack):
@@ -22,6 +23,16 @@ class Player:
     def health_up(self):
         self.health = random.randint(int(self.health) + 2, int(self.health) + 5)
         return self.health
+
+    def equip(self, item_name):
+        for item in self.inventory:
+            if item.name == item_name:
+                self.stuff[item.slot] = item
+                self.inventory.remove(item)
+                print(f"{self.name} a équipé {item.name} (slot: {item.slot}")
+                return
+        print(f"Objet '{item_name}' non trouvé dans l'inventaire.")
+
 
     def __str__(self):
         return f'Nom:{self.name}, ❤️ vie:{self.health}, ⬆️ niveau:{self.level}'
