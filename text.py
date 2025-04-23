@@ -133,7 +133,7 @@ class TextItem:
 
     @staticmethod
     def obj():
-        return ["Explose", "Potion de soin", "Collier de soin", "Epée", "Bouclier", "Casque", "Armure", "Jambière", "Botte", "Gants", "Brassard", "Bombe"]
+        return ["Explose", "Potion de soin", "Bombe"]
 
     @staticmethod
     def go_search():
@@ -141,12 +141,12 @@ class TextItem:
 
     @staticmethod
     def healing_pot(item, player_health):
-        print(f"Vous avez trouvé une {item}.")
+        print(f"Vous avez trouvé une {item.name}.")
         print(f"Vous avez maintenant ❤️ {player_health} point(s) de vie.")
 
     @staticmethod
     def healing_neck(item, player_health):
-        print(f"Vous avez trouvé un {item}.")
+        print(f"Vous avez trouvé un {item.name}.")
         print(f"Vous avez maintenant ❤️ {player_health} point(s) de vie.")
 
     @staticmethod

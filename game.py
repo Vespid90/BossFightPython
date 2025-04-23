@@ -98,7 +98,6 @@ class Game:
                 # ================= DEBUT SYSTEME D'OBJET ================
                 elif alea == 3: #trouve un objet
                     try:
-                        # obj = TextItem.obj()
                         obj = available_stuff
                         TextItem.go_search()
                         Interface.separate_elem()
@@ -116,10 +115,10 @@ class Game:
                             TextItem.find_bomber()
                             Interface.separate_logic()
                         elif objet.name == "Explose":
-                            if "bombe" in p.inventory:
+                            if objet.name == "Bombe" in p.inventory:
                                 health_lose = 2
                                 p.health_lose(health_lose)
-                                p.inventory.remove("bombe")
+                                p.inventory.remove("Bombe")
                                 TextItem.explose_bomber(health_lose)
                                 Interface.separate_logic()
                                 if p.health <= 0:
@@ -132,10 +131,9 @@ class Game:
                                 TextItem.shit()
                                 continue
                         else:
-                            loot = objet
-                            p.inventory.append(loot)
+                            p.inventory.append(objet)
                             TextItem.find_item(objet)
-                            p.equip(loot.name)
+                            p.equip(objet.name)
                             Interface.separate_logic()
                     except TypeError:
                         print("In loot item system")

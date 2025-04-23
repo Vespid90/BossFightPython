@@ -16,5 +16,8 @@ available_stuff = [
     Stuff("Gants en mailles", "defense", 1, "Mains"),
     Stuff("Brassard en mailles", "defense", 1, "Bras"),
     Stuff("Collier de soin", "health", 5, "Collier"),
-    Stuff("Bague protectrice", "health", 2, "Bague")
+    Stuff("Bague protectrice", "health", 2, "Bague"),
+    Stuff("Potion de soin", "health", 5, "Potion"),
+    Stuff("Bombe", "defense", 0, "Bombe"),
+
 ]
