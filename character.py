@@ -1,5 +1,13 @@
 import random
 
+class Character:
+    def __init__(self, name, hp, lvl, dmg, deff):
+        self.name = name
+        self.health = hp
+        self.level = lvl
+        self.damage = dmg
+        self.defense = deff
+
 class Player:
     def __init__(self, name):
         self.name = name
