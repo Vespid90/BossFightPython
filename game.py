@@ -1,5 +1,6 @@
 from character import Player
 from character import Monster
+from stuff import available_stuff
 from stats import Stats
 from text import TextDialogue, TextFight, TextItem, Interface, TextForest
 import random
@@ -16,6 +17,7 @@ class Game:
     def start_game():
         m = monster
         p = player
+        # i = player.stuff.values
         # TextDialogue.title_speed(Interface.logo())
         # TextDialogue.text_speed(TextDialogue.intro())
         # Interface.separate_logic()
@@ -30,7 +32,7 @@ class Game:
                 Interface.separate_logic()
                 # Début des événements aléatoires ; variable "alea" à adapter pour les tests
                 # 0 = combats ; 1 = piege ; 2 = se blesse ; 3 = trouve un objet ;
-                alea = random.randint(0, 3)
+                alea = random.randint(3, 3)
                 TextDialogue.text_speed(TextDialogue.go_wood())
                 # ================= DEBUT COMBAT VS MONSTER =================
                 if alea == 0:
@@ -96,11 +98,12 @@ class Game:
                 # ================= DEBUT SYSTEME D'OBJET ================
                 elif alea == 3: #trouve un objet
                     try:
-                        obj = TextItem.obj()
+                        # obj = TextItem.obj()
+                        obj = available_stuff
                         TextItem.go_search()
                         Interface.separate_elem()
                         objet = random.choice(obj)
-                        if objet == "Potion de soin" or objet == "Collier de soin":
+                        if objet.name == "Potion de soin" or objet.name == "Collier de soin":
                             p.health_up()
                             if objet == "Potion de soin":
                                 TextItem.healing_pot(objet, p.health)
@@ -108,11 +111,11 @@ class Game:
                             else:
                                 TextItem.healing_neck(objet, p.health)
                                 Interface.separate_logic()
-                        elif objet == "Bombe":
+                        elif objet.name == "Bombe":
                             p.inventory.append("Bombe")
                             TextItem.find_bomber()
                             Interface.separate_logic()
-                        elif objet == "Explose":
+                        elif objet.name == "Explose":
                             if "bombe" in p.inventory:
                                 health_lose = 2
                                 p.health_lose(health_lose)
@@ -129,8 +132,10 @@ class Game:
                                 TextItem.shit()
                                 continue
                         else:
-                            p.inventory.append(objet)
+                            loot = objet
+                            p.inventory.append(loot)
                             TextItem.find_item(objet)
+                            p.equip(loot.name)
                             Interface.separate_logic()
                     except TypeError:
                         print("In loot item system")

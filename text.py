@@ -163,7 +163,7 @@ class TextItem:
 
     @staticmethod
     def find_item(item):
-        print(f"Vous avez trouvé l'objet {item}.")
+        print(f"Vous avez trouvé l'objet {item.name}.")
         print("Vous l'ajoutez à votre inventaire")
 
 

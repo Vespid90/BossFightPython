@@ -7,7 +7,7 @@ class Player:
         self.level = 1
         self.damage = 2
         self.defense = 1
-        self.stuff = {"head": "", "torso": "", "legs":"", "feet":"", "arms":"", "off_hand":"", "main_hand":"", "hands":""}
+        self.stuff = {"Tête": None, "Torse": None, "Jambes": None, "Pieds": None, "Bras": None, "Main secondaire": None, "Main principale": None, "Mains": None, "Collier": None, "Bague": None}
         self.inventory = []
 
     def health_lose(self,enemy_attack):
@@ -29,10 +29,7 @@ class Player:
             if item.name == item_name:
                 self.stuff[item.slot] = item
                 self.inventory.remove(item)
-                print(f"{self.name} a équipé {item.name} (slot: {item.slot}")
-                return
-        print(f"Objet '{item_name}' non trouvé dans l'inventaire.")
-
+                print(f"{self.name} a équipé {item.name} (slot: {item.slot})")
 
     def __str__(self):
         return f'Nom:{self.name}, ❤️ vie:{self.health}, ⬆️ niveau:{self.level}'

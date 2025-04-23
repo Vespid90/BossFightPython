@@ -28,4 +28,11 @@ class Stats:
         Interface.separate_elem()
         print("🎒 Inventaire: ")
         print(f"{pl.inventory}")
+        Interface.separate_elem()
+        print("Stuff équipé: ")
+        for key, value in pl.stuff.items():
+            if value is not None:
+                print(f"{key:<18}: {value.name}")
+            else:
+                print(f"{key:<18}: ")
         Interface.separate_logic()
