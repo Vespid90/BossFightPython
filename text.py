@@ -92,7 +92,7 @@ class TextDialogue:
 
 class TextFight:
     def __init__(self):
-        self.name = "figting system"
+        self.name = "fighting system"
 
     @staticmethod
     def new_enemy_appear():

@@ -19,5 +19,5 @@ available_stuff = [
     Stuff("Bague protectrice", "health", 2, "Bague"),
     Stuff("Potion de soin", "health", 5, "Potion"),
     Stuff("Bombe", "defense", 0, "Bombe"),
-
+    Stuff("Explose", "attack", 0, "Explose"),
 ]

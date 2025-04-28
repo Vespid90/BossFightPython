@@ -61,7 +61,7 @@ class Game:
                             Stats.stats(p, m)
                             print("error")
                     except TypeError:
-                        print("In combat system")
+                        print("Error in combat system")
                 # ================= FIN COMBAT VS MONSTER ==================
                 # ================= DEBUT SYSTEME DE PIEGE =================
                 elif alea == 1: #piege
@@ -77,7 +77,7 @@ class Game:
                         else:
                             continue
                     except TypeError:
-                        print("In trap system")
+                        print("Error in trap system")
                 # ================= FIN SYSTEME DE PIEGE =================
                 # ================= DEBUT SYSTEME SE BLESSE =================
                 elif alea == 2: #se blesse
@@ -93,7 +93,7 @@ class Game:
                         else:
                             continue
                     except TypeError:
-                        print("In injure system")
+                        print("Error in injure system")
                 # ================= FIN SYSTEME SE BLESSE =================
                 # ================= DEBUT SYSTEME D'OBJET ================
                 elif alea == 3: #trouve un objet
@@ -136,7 +136,7 @@ class Game:
                             p.equip(objet.name)
                             Interface.separate_logic()
                     except TypeError:
-                        print("In loot item system")
+                        print("Error in loot item system")
                 # ================= FIN SYSTEME D'OBJET =================
                 # ================= DEBUT VOYAGE FORET ==================
                 else: #avance dans la foret sans événements
